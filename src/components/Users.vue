@@ -7,8 +7,8 @@
                 </div>
             </div>
             <span class="loading" v-if="loading">Pesquisando por "{{ username }}"...</span>
-            <div class="box" v-if="results && !loading || error && !loading">
-                <TableUsers/>                
+            <div class="box">
+                <users ref="users"></users>          
             </div>
             <span v-if="error">Desculpe, não foi possível encontrar o usuário "<i>{{ username }}</i>"!</span>            
         </painel>
@@ -17,9 +17,13 @@
 
 <script>
 import axios from "axios";
+import users from "./TableUsers";
 
 export default {
     name: "GetUsers",
+    components: {
+        users
+    },
     data: function (){
         return {
             username: '',
