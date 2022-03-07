@@ -1,14 +1,14 @@
 <template>
-  <UserDetail/>
+  <Users/>
 </template>
 
 <script>
-import UserDetail from './components/UserDetail.vue'
+import Users from './components/Users.vue'
 
 export default {
   name: 'App',
   components: {
-    UserDetail
+    Users
   }
 }
 </script>
