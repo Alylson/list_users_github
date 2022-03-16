@@ -7,8 +7,11 @@
                 </div>
             </div>
             <span class="loading" v-if="loading">Pesquisando por "{{ username }}"...</span>
-            <div class="box">
+            <div class="box" v-if="!loading">
                 <users ref="users"></users>          
+            </div>
+            <div class="box" v-else>
+                <users ref="users" :username="login"></users>          
             </div>
             <span v-if="error">Desculpe, não foi possível encontrar o usuário "<i>{{ username }}</i>"!</span>            
         </painel>
@@ -48,10 +51,10 @@ export default {
               console.log("Searching for... " + this.username );
               axios.get('https://api.github.com/users/' + this.username)
                   .then(response => {
-                      console.log( response.data );
                       this.results = response.data;
                       this.error = '';
                       this.loading = false;
+                      this.username = response.data.login
                   }).catch(error => {
                       this.results = '';
                       this.error = error;
@@ -76,18 +79,5 @@ export default {
         display: block;
         text-align: center;
         color: #6C7A89;
-    }
-    #modal {
-        position:absolute;
-        left: calc(50% - 100px);
-        top: calc(50% - 100px);
-        width: 200px;
-        height: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: grey;
-        color:white;
-        flex-direction: column;
     }
 </style>

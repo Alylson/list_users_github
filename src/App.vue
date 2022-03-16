@@ -1,25 +1,16 @@
 <template>
-  <Users/>
+  <div class="app">
+    <TableUsers />
+  </div>
 </template>
 
 <script>
-import Users from './components/Users.vue'
+import TableUsers from '@/components/github/TableUsers.vue';
 
 export default {
   name: 'App',
   components: {
-    Users
+    TableUsers
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
